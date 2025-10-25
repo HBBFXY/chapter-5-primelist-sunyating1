@@ -1,15 +1,19 @@
-def primelist(n):
-    is_prime = [True] * n
-    if n > 0:
-        is_prime[0] = False
-    if n > 1:
-        is_prime[1] = False
-    for i in range(2, int(n**0.5) + 1):
+def PrimeList(N):
+    if N <= 2:
+        return ""
+    is_prime = [True] * N
+    is_prime[0] = False
+    is_prime[1] = False
+    for i in range(2, int(N**0.5) + 1):
         if is_prime[i]:
-            for j in range(i*i, n, i):
-                is_prime[j] = False
-    primes = [i for i, prime in enumerate(is_prime) if prime]
-    return primes
-n = int(input("请输入一个正整数n: "))
-result = primelist(n)
-print(' '.join(map(str, result)))
+            for j in range(i*i, N, i):
+    primes = []
+    for i in range(2, N):
+        if is_prime[i]:
+            primes.append(str(i))
+    
+    return ' '.join(primes)
+if __name__ == "__main__":
+    N = input()
+    num = PrimeList(int(N))
+    print(num)
